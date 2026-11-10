@@ -82,3 +82,95 @@ body.map-open{overflow:hidden}
 /* Intro lines now reveal together with the parchment */
 .sannasa-inner>.section-kicker{margin:0 0 5px}
 .sannasa-inner>.guest-invitation{margin:0 0 14px}
+
+
+/* GSAP Sannasa unroll: fixed top wooden bar, rotating lower spindle */
+.sannasa-wrap.is-pre-unroll .sannasa-card,
+.sannasa-wrap.is-unrolling .sannasa-card {
+  clip-path: inset(0 0 100% 0);
+  transform: none;
+  animation: none !important;
+}
+.sannasa-wrap.is-pre-unroll .scroll-cap-top,
+.sannasa-wrap.is-unrolling .scroll-cap-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 7;
+  margin: 0;
+  transform: none;
+  animation: none !important;
+}
+.sannasa-wrap.is-pre-unroll .scroll-cap-bottom,
+.sannasa-wrap.is-unrolling .scroll-cap-bottom {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 6;
+  margin: 0;
+  transform: none;
+  transform-style: preserve-3d;
+  backface-visibility: visible;
+  animation: none !important;
+}
+.sannasa-wrap.is-pre-unroll .sannasa-card { opacity: 1; }
+.sannasa-wrap.is-unrolling .sannasa-card { opacity: 1; }
+.sannasa-wrap.is-unrolled .sannasa-card {
+  clip-path: inset(0);
+  transform: none;
+  opacity: 1;
+}
+.sannasa-wrap.is-unrolled .scroll-cap-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 7;
+  margin: 0;
+}
+.sannasa-wrap.is-unrolled .scroll-cap-bottom {
+  position: absolute;
+  top: auto;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 6;
+  margin: 0;
+  opacity: 1;
+  transform: none;
+}
+/* Warm polished wood with carved-looking end knobs */
+.scroll-cap {
+  height: 21px;
+  border: 1px solid #5c3215;
+  border-radius: 12px;
+  background:
+    linear-gradient(90deg, transparent 0 5%, rgba(255,225,151,.55) 8%, transparent 12% 88%, rgba(255,225,151,.45) 92%, transparent 96%),
+    repeating-linear-gradient(0deg, rgba(62,29,9,.16) 0 1px, transparent 1px 4px),
+    linear-gradient(180deg, #f3d18a 0%, #a96827 20%, #6b3515 48%, #c1843e 70%, #4b260f 100%);
+  box-shadow: 0 5px 9px rgba(39,17,5,.32), inset 0 2px 3px rgba(255,239,190,.75), inset 0 -3px 4px rgba(44,17,4,.45);
+}
+.scroll-cap:before,
+.scroll-cap:after {
+  position: absolute;
+  top: 50%;
+  width: 17px;
+  height: 29px;
+  content: "";
+  border: 1px solid #704018;
+  border-radius: 7px;
+  background: linear-gradient(90deg,#6b3515,#d39a50 32%,#754019 70%,#3f1d0b);
+  box-shadow: 0 2px 4px rgba(39,17,5,.28), inset 0 1px 2px rgba(255,231,174,.65);
+  transform: translateY(-50%);
+}
+.scroll-cap:before { left: -10px; }
+.scroll-cap:after { right: -10px; }
+.scroll-cap span {
+  inset: 6px 18px;
+  border: 0;
+  border-radius: 50%;
+  background: linear-gradient(180deg,rgba(255,239,190,.55),rgba(75,35,12,.18));
+  opacity: .8;
+}
