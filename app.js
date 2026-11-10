@@ -159,9 +159,44 @@
   function setupOpening() {
     $("#openInvitation").addEventListener("click", function () {
       const scroll = $("#invitation");
-      scroll.classList.remove("is-pre-unroll", "is-unrolled");
-      scroll.classList.add("is-unrolling");
-      window.setTimeout(function () { scroll.classList.remove("is-unrolling"); scroll.classList.add("is-unrolled"); }, 2300);
+      const parchment = scroll.querySelector(".sannasa-card");
+      const topSpindle = scroll.querySelector(".scroll-cap-top");
+      const bottomSpindle = scroll.querySelector(".scroll-cap-bottom");
+      scroll.classList.remove("is-pre-unroll", "is-unrolled", "is-unrolling");
+
+      if (window.gsap) {
+        const revealDistance = Math.max(0, parchment.offsetHeight - bottomSpindle.offsetHeight);
+        window.gsap.set(parchment, { clipPath: "inset(0% 0% 100% 0%)" });
+        window.gsap.set(bottomSpindle, { y: 0, rotationX: 0, transformPerspective: 1100, transformOrigin: "50% 50%" });
+        scroll.classList.add("is-unrolling");
+        window.gsap.timeline({
+          onComplete: function () {
+            scroll.classList.remove("is-unrolling");
+            scroll.classList.add("is-unrolled");
+            window.gsap.set([parchment, bottomSpindle], { clearProps: "clipPath,transform" });
+          }
+        })
+        .to(parchment, {
+          clipPath: "inset(0% 0% 0% 0%)",
+          duration: 3.7,
+          ease: "power1.inOut"
+        }, 0)
+        .to(bottomSpindle, {
+          y: revealDistance,
+          rotationX: 720,
+          duration: 3.7,
+          ease: "power1.inOut"
+        }, 0);
+      } else {
+        scroll.classList.add("is-unrolling");
+        parchment.style.clipPath = "inset(0)";
+        bottomSpindle.style.top = "auto";
+        bottomSpindle.style.bottom = "0";
+        window.setTimeout(function () {
+          scroll.classList.remove("is-unrolling");
+          scroll.classList.add("is-unrolled");
+        }, 3700);
+      }
       document.body.classList.remove("is-locked");
       openingScreen.classList.add("is-closing");
       invitationContent.classList.add("is-visible");
