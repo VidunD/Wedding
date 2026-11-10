@@ -6,11 +6,12 @@ window.WEDDING_CONFIG = {
   weddingDate: "2027-06-20T10:08:00+05:30",
   dateLabel: "2027 ජූනි 20 වන ඉරිදා",
   timeLabel: "පෙ.ව. 10.08 ට",
+  // Set this ONE venue address/map query. All three events use this same location.
   venue: { name: "මංගල උත්සව ශාලාව", area: "මහනුවර, ශ්‍රී ලංකාව", mapQuery: "Kandy, Sri Lanka" },
   events: [
-    { id: "poruwa", time: "පෙ.ව. 10.08", venue: "මංගල උත්සව ශාලාව · මහනුවර", mapQuery: "Kandy, Sri Lanka" },
-    { id: "tea", time: "පෙ.ව. 11.30", venue: "මංගල උත්සව ශාලාව · මහනුවර", mapQuery: "Kandy, Sri Lanka" },
-    { id: "reception", time: "ප.ව. 12.30", venue: "මංගල උත්සව ශාලාව · මහනුවර", mapQuery: "Kandy, Sri Lanka" }
+    { id: "poruwa", time: "පෙ.ව. 10.08", venue: "මංගල උත්සව ශාලාව · මහනුවර" },
+    { id: "tea", time: "පෙ.ව. 11.30", venue: "මංගල උත්සව ශාලාව · මහනුවර" },
+    { id: "reception", time: "ප.ව. 12.30", venue: "මංගල උත්සව ශාලාව · මහනුවර" }
   ],
   // Add a licensed audio recording at this path.
   audioPath: "assets/magul-bera.mp3",
