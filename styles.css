@@ -78,3 +78,7 @@ body.map-open{overflow:hidden}
 
 /* Disable every legacy parchment entrance animation; only centre-out opening remains */
 .sannasa-wrap:not(.is-unrolling) .sannasa-card{animation:none!important}
+
+/* Intro lines now reveal together with the parchment */
+.sannasa-inner>.section-kicker{margin:0 0 5px}
+.sannasa-inner>.guest-invitation{margin:0 0 14px}
