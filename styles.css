@@ -23,6 +23,8 @@
 .sannasa-wrap.is-pre-unroll .scroll-cap-top{z-index:4}
 .sannasa-wrap.is-pre-unroll .scroll-cap-bottom{z-index:5;opacity:1}
 .sannasa-wrap.is-unrolling .sannasa-card{animation:scrollFromCentre 2.35s cubic-bezier(.18,.72,.2,1) both;transform-origin:center center}
+.sannasa-wrap.is-unrolling .scroll-cap-top,
+.sannasa-wrap.is-unrolling .scroll-cap-bottom{position:absolute;left:0;right:0;top:50%;margin:0}
 .sannasa-wrap.is-unrolling .scroll-cap-top{animation:topRollFromCentre 2.35s cubic-bezier(.18,.72,.2,1) both}
 .sannasa-wrap.is-unrolling .scroll-cap-bottom{animation:bottomRollFromCentre 2.35s cubic-bezier(.18,.72,.2,1) both}
 .sannasa-wrap.is-unrolled .sannasa-card{opacity:1;clip-path:inset(0);transform:none}
@@ -30,7 +32,7 @@
 .sannasa-wrap.is-unrolled .scroll-cap-bottom{position:absolute;top:auto;bottom:0;left:0;right:0;margin:0;transform:none;opacity:1}
 @keyframes scrollFromCentre{0%{clip-path:inset(50% 0 50% 0);transform:scaleY(.08)}35%{clip-path:inset(31% 0 31% 0);transform:scaleY(.42)}72%{clip-path:inset(7% 0 7% 0);transform:scaleY(1.015)}100%{clip-path:inset(0);transform:scaleY(1)}}
 @keyframes topRollFromCentre{0%{top:50%;transform:translateY(-50%) scaleX(.72)}55%{top:4%;transform:translateY(-50%) scaleX(1.04)}100%{top:0;transform:translateY(0) scaleX(1)}}
-@keyframes bottomRollFromCentre{0%{top:50%;transform:translateY(-50%) scaleX(.72)}55%{top:96%;transform:translateY(-50%) scaleX(1.04)}100%{top:auto;bottom:0;transform:translateY(0) scaleX(1)}}
+@keyframes bottomRollFromCentre{0%{top:50%;transform:translateY(-50%) scaleX(.72)}55%{top:96%;transform:translateY(-50%) scaleX(1.04)}100%{top:100%;transform:translateY(-100%) scaleX(1)}}
 
 /* Traditional pun-kalasa clusters fill the empty margins beside the narrow scroll */
 .kalasa-cluster{position:absolute;z-index:1;top:50%;display:grid;grid-template-columns:repeat(2, minmax(0,1fr));align-items:center;justify-items:center;width:190px;gap:3px 0;transform:translateY(-50%);pointer-events:none}
