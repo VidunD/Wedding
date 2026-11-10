@@ -29,6 +29,35 @@
     return guestName + " වෙත කෙරෙන ගෞරවනීය ආරාධනාවයි";
   }
   function mapsUrl(query) { return "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(query || "Kandy, Sri Lanka"); }
+  function openVenueMap(query, label) {
+    const search = query || "Kandy, Sri Lanka";
+    $("#mapModalTitle").textContent = label || "උත්සව ස්ථානය";
+    $("#mapModalAddress").textContent = search;
+    $("#venueMapFrame").src = "https://maps.google.com/maps?q=" + encodeURIComponent(search) + "&output=embed";
+    $("#mapDirections").href = mapsUrl(search);
+    $("#mapModal").hidden = false;
+    document.body.classList.add("map-open");
+    $("#mapModalClose").focus();
+  }
+  function closeVenueMap() {
+    $("#mapModal").hidden = true;
+    $("#venueMapFrame").src = "about:blank";
+    document.body.classList.remove("map-open");
+  }
+  function setupVenueMaps() {
+    document.querySelectorAll(".map-link").forEach(function (link) {
+      link.addEventListener("click", function (event) {
+        event.preventDefault();
+        const eventName = link.closest(".timeline-copy").querySelector("h3").textContent;
+        const eventConfig = (config.events || []).find(function (item) { return item.id + "Map" === link.id; });
+        const query = eventConfig ? (eventConfig.mapQuery || (config.venue || {}).mapQuery) : (config.venue || {}).mapQuery;
+        openVenueMap(query, eventName);
+      });
+    });
+    $("#mapModalClose").addEventListener("click", closeVenueMap);
+    $("#mapModal").querySelector("[data-close-map]").addEventListener("click", closeVenueMap);
+    document.addEventListener("keydown", function (event) { if (event.key === "Escape" && !$("#mapModal").hidden) closeVenueMap(); });
+  }
 
   function renderConfig() {
     const couple = config.couple || {};
@@ -127,6 +156,10 @@
   }
   function setupOpening() {
     $("#openInvitation").addEventListener("click", function () {
+      const scroll = $("#invitation");
+      scroll.classList.remove("is-pre-unroll", "is-unrolled");
+      scroll.classList.add("is-unrolling");
+      window.setTimeout(function () { scroll.classList.remove("is-unrolling"); scroll.classList.add("is-unrolled"); }, 2300);
       document.body.classList.remove("is-locked");
       openingScreen.classList.add("is-closing");
       invitationContent.classList.add("is-visible");
@@ -210,6 +243,7 @@
     renderConfig();
     setupGuestForm();
     setupOpening();
+    setupVenueMaps();
     $("#rsvpForm").addEventListener("submit", handleRsvpSubmit);
     updateCountdown();
     window.setInterval(updateCountdown, 1000);
