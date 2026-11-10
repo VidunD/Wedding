@@ -49,7 +49,12 @@
       <h2 class="hero-title">සෙනෙහසේ මංගල සන්නස</h2>
       <p class="guest-invitation" id="guestInvitation">ඔබ වෙත කෙරෙන ගෞරවනීය ආරාධනාවයි</p>
 
-      <div class="sannasa-wrap" id="invitation">
+      <div class="sannasa-stage">
+        <img class="stage-kalasa kalasa-left" src="assets/pun-kalasa.svg" alt="" aria-hidden="true">
+        <img class="stage-kalasa kalasa-right" src="assets/pun-kalasa.svg" alt="" aria-hidden="true">
+        <img class="stage-flower flower-left" src="assets/kandyan-flourish.svg" alt="" aria-hidden="true">
+        <img class="stage-flower flower-right" src="assets/kandyan-flourish.svg" alt="" aria-hidden="true">
+      <div class="sannasa-wrap is-pre-unroll" id="invitation">
         <div class="scroll-cap scroll-cap-top" aria-hidden="true"><span></span></div>
         <article class="sannasa-card">
           <div class="sannasa-inner">
@@ -69,6 +74,7 @@
           </div>
         </article>
         <div class="scroll-cap scroll-cap-bottom" aria-hidden="true"><span></span></div>
+      </div>
       </div>
 
       <div class="hero-bottom-ornament" aria-hidden="true"><span class="fine-line"></span><img src="assets/pun-kalasa.svg" alt=""><span class="fine-line"></span></div>
@@ -114,6 +120,17 @@
         </div></article>
       </div>
     </section>
+
+    <div class="map-modal" id="mapModal" role="dialog" aria-modal="true" aria-labelledby="mapModalTitle" hidden>
+      <div class="map-modal-backdrop" data-close-map></div>
+      <div class="map-modal-panel">
+        <button class="map-modal-close" id="mapModalClose" type="button" aria-label="Close map">×</button>
+        <p class="section-kicker">FIND YOUR WAY</p><h2 id="mapModalTitle">උත්සව ස්ථානය</h2>
+        <p class="map-modal-address" id="mapModalAddress"></p>
+        <iframe id="venueMapFrame" title="Google Maps venue location" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        <a class="map-directions-button" id="mapDirections" href="#" target="_blank" rel="noopener noreferrer">Google Maps හි මාර්ගය බලන්න ↗</a>
+      </div>
+    </div>
 
     <section class="rsvp-section section-shell" id="rsvp">
       <div class="rsvp-card">
