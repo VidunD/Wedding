@@ -13,3 +13,40 @@
 @media(max-width:760px){.site-header{min-height:64px;padding-inline:25px}.site-nav{gap:14px}.site-nav a{font-size:12px}.header-flourish{display:none}.hero-section{min-height:auto;padding-top:45px;padding-bottom:48px}.section-shell{padding:70px 22px}.timeline{grid-template-columns:1fr;gap:32px;width:min(480px,100%)}.timeline:before{top:20px;bottom:20px;left:40px;width:1px;height:auto;background:linear-gradient(180deg,transparent,var(--gold-dark),var(--gold-dark),transparent)}.timeline-item{display:grid;grid-template-columns:82px 1fr;gap:18px;padding:0;text-align:left}.timeline-icon{grid-row:1/span 4;margin:0}.timeline-description{min-height:0}.timeline-copy h3{margin-top:2px}}
 @media(max-width:520px){.page-frame{inset:6px}.opening-panel{padding:34px 18px 30px}.opening-screen:before{inset:12px}.opening-screen:after{inset:20px}.opening-ornament{width:86px;height:58px}.opening-copy{font-size:15px}.site-header{flex-wrap:wrap;justify-content:center;gap:3px 18px;padding:9px 18px 10px}.brand-mark{width:100%;justify-content:center}.brand-symbol{font-size:20px}.brand-name{font-size:8px}.site-nav{gap:18px}.site-nav a{font-size:11px}.hero-section{padding-inline:13px}.hero-top-ornament img{width:96px;height:52px}.guest-invitation{margin-bottom:18px}.sannasa-wrap{padding-block:9px}.sannasa-card{padding:9px}.sannasa-inner{padding:28px 13px 26px}.sannasa-overline{font-size:7px}.couple-names{gap:8px;margin-top:20px}.wedding-date{font-size:19px}.countdown{gap:7px}.countdown-item{min-width:54px}.countdown-value{font-size:29px}.countdown-label{font-size:11px}.countdown-separator{font-size:21px}.form-row{grid-template-columns:1fr;gap:0}.audio-toggle{right:13px;bottom:14px;padding:8px 12px;font-size:11px}.toast{right:12px;bottom:72px;max-width:calc(100vw - 24px)}.rsvp-card{padding:25px 18px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+/* Royal Sannasa: a true top-to-bottom scroll reveal, triggered by the opening button */
+.sannasa-stage{position:relative;width:min(100%,980px);isolation:isolate}
+.sannasa-stage .sannasa-wrap{width:min(100%,760px);margin-inline:auto}
+.sannasa-wrap.is-pre-unroll .sannasa-card{opacity:0;clip-path:inset(0 0 100% 0);transform:scaleY(.06);transform-origin:top center;animation:none}
+.sannasa-wrap.is-pre-unroll .scroll-cap-bottom{opacity:0}
+.sannasa-wrap.is-unrolling .sannasa-card{animation:royalScrollReveal 2.15s cubic-bezier(.2,.72,.18,1) both;transform-origin:top center}
+.sannasa-wrap.is-unrolling .scroll-cap-bottom{animation:bottomRollReveal 2.15s cubic-bezier(.2,.72,.18,1) both}
+.sannasa-wrap.is-unrolled .sannasa-card{opacity:1;clip-path:inset(0);transform:none}
+.sannasa-wrap.is-unrolled .scroll-cap-bottom{opacity:1}
+@keyframes royalScrollReveal{0%{opacity:1;clip-path:inset(0 0 100% 0);transform:scaleY(.06)}18%{clip-path:inset(0 0 82% 0);transform:scaleY(.22)}72%{clip-path:inset(0 0 8% 0);transform:scaleY(1.015)}100%{opacity:1;clip-path:inset(0);transform:scaleY(1)}}
+@keyframes bottomRollReveal{0%{opacity:1;transform:translateY(-440px) scaleX(.7)}65%{opacity:1;transform:translateY(-35px) scaleX(1)}100%{opacity:1;transform:translateY(0) scaleX(1)}}
+.stage-kalasa,.stage-flower{position:absolute;z-index:-1;pointer-events:none;filter:drop-shadow(0 9px 12px rgba(75,30,13,.13))}
+.stage-kalasa{width:132px;height:150px;object-fit:contain;opacity:.9;top:36%;animation:kalasaFloat 5s ease-in-out infinite}
+.kalasa-left{left:-14px;transform:rotate(-13deg)}
+.kalasa-right{right:-14px;transform:scaleX(-1) rotate(-13deg);animation-delay:-2.5s}
+.stage-flower{width:116px;height:75px;object-fit:contain;opacity:.65;top:7%}
+.flower-left{left:2%;transform:rotate(-24deg)}
+.flower-right{right:2%;transform:scaleX(-1) rotate(-24deg)}
+@keyframes kalasaFloat{0%,100%{translate:0 0}50%{translate:0 -10px}}
+.hero-bottom-ornament{position:relative;gap:18px}
+.hero-bottom-ornament:before,.hero-bottom-ornament:after{content:"✥  ❋  ✥";color:var(--gold-dark);font-size:15px;letter-spacing:8px;opacity:.72}
+.hero-bottom-ornament img{width:92px;height:92px;filter:drop-shadow(0 8px 10px rgba(74,14,23,.16))}
+.map-modal[hidden]{display:none!important}
+.map-modal{position:fixed;z-index:80;inset:0;display:grid;place-items:center;padding:20px}
+.map-modal-backdrop{position:absolute;inset:0;background:rgba(24,6,10,.78);backdrop-filter:blur(7px)}
+.map-modal-panel{position:relative;z-index:1;width:min(760px,100%);padding:27px;border:1px solid var(--gold);outline:1px solid rgba(212,175,55,.3);outline-offset:5px;background:var(--ivory);box-shadow:0 25px 90px rgba(0,0,0,.4);text-align:center}
+.map-modal-panel h2{margin:2px 0;color:var(--maroon);font-size:clamp(22px,4vw,30px)}
+.map-modal-address{margin:5px 0 18px;color:var(--muted);font-size:13px}
+.map-modal-panel iframe{display:block;width:100%;height:min(52vh,420px);border:1px solid rgba(153,114,30,.4);background:var(--parchment)}
+.map-modal-close{position:absolute;top:8px;right:12px;width:38px;height:38px;border:1px solid var(--line);border-radius:50%;color:var(--maroon);background:var(--parchment);font:28px/1 serif}
+.map-directions-button{display:inline-flex;justify-content:center;gap:8px;margin-top:17px;padding:10px 20px;color:var(--gold-light);border:1px solid var(--gold-dark);background:linear-gradient(120deg,var(--deep),var(--soft));text-decoration:none;font-size:13px;transition:transform .2s,box-shadow .2s}
+.map-directions-button:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(74,14,23,.2)}
+body.map-open{overflow:hidden}
+@media(max-width:900px){.stage-kalasa{width:92px;height:112px;top:38%}.kalasa-left{left:-9px}.kalasa-right{right:-9px}.stage-flower{width:78px}}
+@media(max-width:600px){.stage-kalasa{width:58px;height:76px;top:42%;opacity:.65}.kalasa-left{left:-15px}.kalasa-right{right:-15px}.stage-flower{width:54px;top:4%;opacity:.5}.hero-bottom-ornament img{width:74px;height:74px}.map-modal{padding:12px}.map-modal-panel{padding:24px 14px 18px}.map-modal-panel iframe{height:48vh}}
+@media(prefers-reduced-motion:reduce){.sannasa-wrap.is-unrolling .sannasa-card,.sannasa-wrap.is-unrolling .scroll-cap-bottom{animation-duration:.01ms!important}}
