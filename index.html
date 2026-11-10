@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="si">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#4a0e17">
+  <meta name="description" content="A timeless Kandyan-inspired digital wedding sannasa.">
+  <title>මංගල සන්නස | A Royal Wedding Invitation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@400;500;600;700;800&family=Cinzel:wght@400;500;600;700&family=Noto+Serif+Sinhala:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="config.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="page-frame" aria-hidden="true"></div>
+  <div class="opening-screen" id="openingScreen" role="dialog" aria-modal="true" aria-labelledby="openingTitle">
+    <div class="opening-panel">
+      <img class="opening-ornament" src="assets/kandyan-flourish.svg" alt="">
+      <p class="eyebrow opening-eyebrow">A ROYAL INVITATION</p>
+      <h1 id="openingTitle">මංගල සන්නස</h1>
+      <p class="opening-copy">සෙනෙහසේ මංගල මොහොතට<br>ඔබට කෙරෙන ගෞරවනීය ඇරයුමයි</p>
+      <span class="gold-rule" aria-hidden="true"></span>
+      <button class="open-invitation-button" id="openInvitation" type="button">
+        <span>සන්නස දිගහරින්න</span><span class="button-arrow" aria-hidden="true">✦</span>
+      </button>
+      <p class="opening-hint">Tap to open your invitation</p>
+    </div>
+  </div>
+
+  <audio id="weddingAudio" src="assets/magul-bera.mp3" preload="none" loop></audio>
+  <button class="audio-toggle" id="audioToggle" type="button" aria-label="Play wedding music" aria-pressed="false" hidden>
+    <span class="audio-icon" aria-hidden="true">♫</span><span class="audio-label">සංගීතය ක්‍රියාත්මක කරන්න</span>
+  </button>
+
+  <main id="invitationContent" class="invitation-content">
+    <header class="site-header">
+      <a class="brand-mark" href="#home" aria-label="Wedding invitation home"><span class="brand-symbol">❋</span><span class="brand-name">THE WEDDING SANNASA</span></a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="#invitation">ආරාධනාව</a><a href="#ceremony">මංගල උත්සවය</a><a href="#rsvp">පිළිතුරු</a>
+      </nav>
+      <span class="header-flourish" aria-hidden="true">❧</span>
+    </header>
+
+    <section class="hero-section" id="home">
+      <div class="hero-top-ornament" aria-hidden="true"><img src="assets/kandyan-flourish.svg" alt=""></div>
+      <p class="section-kicker">IN THE NAME OF LOVE &amp; BLESSINGS</p>
+      <h2 class="hero-title">සෙනෙහසේ මංගල සන්නස</h2>
+      <p class="guest-invitation" id="guestInvitation">ඔබ වෙත කෙරෙන ගෞරවනීය ආරාධනාවයි</p>
+
+      <div class="sannasa-wrap" id="invitation">
+        <div class="scroll-cap scroll-cap-top" aria-hidden="true"><span></span></div>
+        <article class="sannasa-card">
+          <div class="sannasa-inner">
+            <p class="sannasa-overline">A SACRED UNION · A TIMELESS PROMISE</p>
+            <div class="mini-flower" aria-hidden="true">✥</div>
+            <p class="blessing" id="blessingText">දෙව්රද සමන් සුමන දෙවි පිහිටෙන්...</p>
+            <p class="invite-line">අපගේ ජීවිතයේ සොඳුරුතම දිනයට</p>
+            <p class="invite-line invite-line-strong">ඔබගේ පැමිණීමෙන් ආශිර්වාද එක්කරන මෙන්</p>
+            <p class="invite-line">ආදරයෙන් හා ගෞරවයෙන් ආරාධනා කර සිටිමු.</p>
+            <div class="couple-names"><span id="partnerOne">සමන්</span><span class="ampersand">&amp;</span><span id="partnerTwo">කමලී</span></div>
+            <p class="couple-caption">TOGETHER WITH THEIR FAMILIES</p>
+            <div class="ornamental-divider" aria-hidden="true"><span></span>✧<span></span></div>
+            <p class="date-label">THE WEDDING CELEBRATION</p>
+            <p class="wedding-date" id="weddingDateText">2027 ජූනි 20 වන ඉරිදා</p>
+            <p class="wedding-time" id="weddingTimeText">පෙ.ව. 10.08 ට</p>
+            <p class="venue-line" id="heroVenue">මහනුවර, ශ්‍රී ලංකාව</p>
+          </div>
+        </article>
+        <div class="scroll-cap scroll-cap-bottom" aria-hidden="true"><span></span></div>
+      </div>
+
+      <div class="hero-bottom-ornament" aria-hidden="true"><span class="fine-line"></span><img src="assets/pun-kalasa.svg" alt=""><span class="fine-line"></span></div>
+      <a class="scroll-cue" href="#countdown">පහළට පිවිසෙන්න <span aria-hidden="true">↓</span></a>
+    </section>
+
+    <section class="countdown-section section-shell" id="countdown">
+      <div class="section-heading">
+        <p class="section-kicker">THE MOMENT DRAWS NEAR</p><h2>මංගල දිනයට තව...</h2><span class="heading-ornament" aria-hidden="true">✥</span>
+      </div>
+      <div class="countdown" aria-label="Countdown to the wedding">
+        <div class="countdown-item"><span id="days" class="countdown-value">000</span><span class="countdown-label">දින</span></div><span class="countdown-separator" aria-hidden="true">:</span>
+        <div class="countdown-item"><span id="hours" class="countdown-value">00</span><span class="countdown-label">පැය</span></div><span class="countdown-separator" aria-hidden="true">:</span>
+        <div class="countdown-item"><span id="minutes" class="countdown-value">00</span><span class="countdown-label">මිනිත්තු</span></div><span class="countdown-separator" aria-hidden="true">:</span>
+        <div class="countdown-item"><span id="seconds" class="countdown-value">00</span><span class="countdown-label">තත්පර</span></div>
+      </div>
+      <p class="countdown-note" id="countdownNote">We look forward to celebrating with you.</p>
+    </section>
+
+    <section class="ceremony-section section-shell" id="ceremony">
+      <div class="section-heading">
+        <p class="section-kicker">A DAY TO REMEMBER</p><h2>මංගල උත්සවයේ විස්තර</h2>
+        <p class="section-description">සම්ප්‍රදායේ අසිරියත්, ආදරයේ සොඳුරු බවත් එක්වන දිනය.</p><span class="heading-ornament" aria-hidden="true">✥</span>
+      </div>
+      <div class="timeline">
+        <article class="timeline-item"><div class="timeline-icon" aria-hidden="true">❧</div><div class="timeline-copy">
+          <p class="timeline-time" id="poruwaTime">පෙ.ව. 10.08</p><h3>පෝරුවේ චාරිත්‍ර</h3>
+          <p class="timeline-description">සම්ප්‍රදායික චාරිත්‍ර මධ්‍යයේ නව දිවියකට පියනඟන මොහොත.</p>
+          <p class="timeline-venue" id="poruwaVenue">මංගල උත්සව ශාලාව · මහනුවර</p>
+          <a class="map-link" id="poruwaMap" href="https://www.google.com/maps/search/?api=1&amp;query=Kandy%2C%20Sri%20Lanka" target="_blank" rel="noopener noreferrer">සිතියම බලන්න <span aria-hidden="true">↗</span></a>
+        </div></article>
+        <article class="timeline-item"><div class="timeline-icon" aria-hidden="true">❋</div><div class="timeline-copy">
+          <p class="timeline-time" id="teaTime">පෙ.ව. 11.30</p><h3>තේ පැන් සංග්‍රහය</h3>
+          <p class="timeline-description">සුහද කතාබහකින් සහ රසවත් සංග්‍රහයකින් මොහොත රසවත් කරගනිමු.</p>
+          <p class="timeline-venue" id="teaVenue">මංගල උත්සව ශාලාව · මහනුවර</p>
+          <a class="map-link" id="teaMap" href="https://www.google.com/maps/search/?api=1&amp;query=Kandy%2C%20Sri%20Lanka" target="_blank" rel="noopener noreferrer">සිතියම බලන්න <span aria-hidden="true">↗</span></a>
+        </div></article>
+        <article class="timeline-item"><div class="timeline-icon" aria-hidden="true">✧</div><div class="timeline-copy">
+          <p class="timeline-time" id="receptionTime">ප.ව. 12.30</p><h3>මංගල ප්‍රිය සම්භාෂණය</h3>
+          <p class="timeline-description">අපගේ සතුට බෙදාගනිමින් මේ සොඳුරු දිනය සැමරීමට එක්වන්න.</p>
+          <p class="timeline-venue" id="receptionVenue">මංගල උත්සව ශාලාව · මහනුවර</p>
+          <a class="map-link" id="receptionMap" href="https://www.google.com/maps/search/?api=1&amp;query=Kandy%2C%20Sri%20Lanka" target="_blank" rel="noopener noreferrer">සිතියම බලන්න <span aria-hidden="true">↗</span></a>
+        </div></article>
+      </div>
+    </section>
+
+    <section class="rsvp-section section-shell" id="rsvp">
+      <div class="rsvp-card">
+        <div class="rsvp-decoration" aria-hidden="true">✥</div>
+        <p class="section-kicker">KINDLY REPLY</p><h2>ඔබගේ පැමිණීම තහවුරු කරන්න</h2>
+        <p class="rsvp-intro" id="rsvpGreeting">මෙම සොඳුරු දිනයට ඔබ සහභාගී වන බව අපට දන්වන්න.</p>
+        <form id="rsvpForm" novalidate>
+          <div class="form-field"><label for="guestName">ඔබගේ නම <span>*</span></label><input id="guestName" name="guestName" type="text" autocomplete="name" placeholder="නම ඇතුළත් කරන්න" maxlength="80" required></div>
+          <div class="form-field"><label for="attendance">සහභාගී වන්නේද? <span>*</span></label><select id="attendance" name="attendance" required><option value="yes">ඔව්, සතුටින් සහභාගී වෙමි</option><option value="no">කණගාටුවෙන්, සහභාගී විය නොහැක</option></select></div>
+          <div class="form-row" id="guestOptions">
+            <div class="form-field"><label for="seatCount">ආසන ගණන</label><select id="seatCount" name="seatCount"></select><small id="seatHint">ඔබට වෙන් කළ ආසන සීමාව අනුව තෝරන්න.</small></div>
+            <div class="form-field"><label for="diet">ආහාර කැමැත්ත</label><select id="diet" name="diet"><option value="non-veg">සාමාන්‍ය ආහාර (Non-Veg)</option><option value="veg">නිර්මාංශ (Vegetarian)</option></select></div>
+          </div>
+          <div class="form-field"><label for="guestNote">විශේෂ සටහන <span class="optional-label">(අත්‍යවශ්‍ය නොවේ)</span></label><textarea id="guestNote" name="guestNote" rows="3" maxlength="500" placeholder="අමතර විස්තරයක් තිබේ නම් මෙහි සටහන් කරන්න..."></textarea></div>
+          <button class="submit-rsvp" type="submit">පිළිතුර යොමු කරන්න <span aria-hidden="true">✧</span></button>
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        </form>
+        <p class="privacy-note">ඔබ ලබාදෙන තොරතුරු මංගල උත්සවයේ සහභාගීත්වය සංවිධානය කිරීම සඳහා පමණක් භාවිතා වේ.</p>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <img src="assets/kandyan-flourish.svg" alt="" class="footer-ornament">
+      <p class="footer-blessing">ඔබගේ පැමිණීම අපගේ සතුට තවත් අර්ථවත් කරනු ඇත.</p>
+      <p class="footer-couple" id="footerCouple">Saman &amp; Kamali</p>
+      <p class="footer-small">WITH LOVE &amp; GRATITUDE · <span id="footerYear">2027</span></p>
+    </footer>
+  </main>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
