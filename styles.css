@@ -14,28 +14,49 @@
 @media(max-width:520px){.page-frame{inset:6px}.opening-panel{padding:34px 18px 30px}.opening-screen:before{inset:12px}.opening-screen:after{inset:20px}.opening-ornament{width:86px;height:58px}.opening-copy{font-size:15px}.site-header{flex-wrap:wrap;justify-content:center;gap:3px 18px;padding:9px 18px 10px}.brand-mark{width:100%;justify-content:center}.brand-symbol{font-size:20px}.brand-name{font-size:8px}.site-nav{gap:18px}.site-nav a{font-size:11px}.hero-section{padding-inline:13px}.hero-top-ornament img{width:96px;height:52px}.guest-invitation{margin-bottom:18px}.sannasa-wrap{padding-block:9px}.sannasa-card{padding:9px}.sannasa-inner{padding:28px 13px 26px}.sannasa-overline{font-size:7px}.couple-names{gap:8px;margin-top:20px}.wedding-date{font-size:19px}.countdown{gap:7px}.countdown-item{min-width:54px}.countdown-value{font-size:29px}.countdown-label{font-size:11px}.countdown-separator{font-size:21px}.form-row{grid-template-columns:1fr;gap:0}.audio-toggle{right:13px;bottom:14px;padding:8px 12px;font-size:11px}.toast{right:12px;bottom:72px;max-width:calc(100vw - 24px)}.rsvp-card{padding:25px 18px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 
-/* Royal Sannasa: a true top-to-bottom scroll reveal, triggered by the opening button */
-.sannasa-stage{position:relative;width:min(100%,980px);isolation:isolate}
-.sannasa-stage .sannasa-wrap{width:min(100%,760px);margin-inline:auto}
-.sannasa-wrap.is-pre-unroll .sannasa-card{opacity:0;clip-path:inset(0 0 100% 0);transform:scaleY(.06);transform-origin:top center;animation:none}
-.sannasa-wrap.is-pre-unroll .scroll-cap-bottom{opacity:0}
-.sannasa-wrap.is-unrolling .sannasa-card{animation:royalScrollReveal 2.15s cubic-bezier(.2,.72,.18,1) both;transform-origin:top center}
-.sannasa-wrap.is-unrolling .scroll-cap-bottom{animation:bottomRollReveal 2.15s cubic-bezier(.2,.72,.18,1) both}
+/* Royal Sannasa: both rolled ends travel away from the centre together */
+.sannasa-stage{position:relative;isolation:isolate;width:min(100%,1120px);min-height:1px}
+.sannasa-stage .sannasa-wrap{position:relative;z-index:2;width:min(100%,760px);margin-inline:auto}
+.sannasa-wrap.is-pre-unroll .sannasa-card{opacity:1;clip-path:inset(50% 0 50% 0);transform:scaleY(.08);transform-origin:center center;animation:none}
+.sannasa-wrap.is-pre-unroll .scroll-cap-top,
+.sannasa-wrap.is-pre-unroll .scroll-cap-bottom{position:absolute;left:0;right:0;top:50%;margin:0;transform:translateY(-50%)}
+.sannasa-wrap.is-pre-unroll .scroll-cap-top{z-index:4}
+.sannasa-wrap.is-pre-unroll .scroll-cap-bottom{z-index:5;opacity:1}
+.sannasa-wrap.is-unrolling .sannasa-card{animation:scrollFromCentre 2.35s cubic-bezier(.18,.72,.2,1) both;transform-origin:center center}
+.sannasa-wrap.is-unrolling .scroll-cap-top{animation:topRollFromCentre 2.35s cubic-bezier(.18,.72,.2,1) both}
+.sannasa-wrap.is-unrolling .scroll-cap-bottom{animation:bottomRollFromCentre 2.35s cubic-bezier(.18,.72,.2,1) both}
 .sannasa-wrap.is-unrolled .sannasa-card{opacity:1;clip-path:inset(0);transform:none}
-.sannasa-wrap.is-unrolled .scroll-cap-bottom{opacity:1}
-@keyframes royalScrollReveal{0%{opacity:1;clip-path:inset(0 0 100% 0);transform:scaleY(.06)}18%{clip-path:inset(0 0 82% 0);transform:scaleY(.22)}72%{clip-path:inset(0 0 8% 0);transform:scaleY(1.015)}100%{opacity:1;clip-path:inset(0);transform:scaleY(1)}}
-@keyframes bottomRollReveal{0%{opacity:1;transform:translateY(-440px) scaleX(.7)}65%{opacity:1;transform:translateY(-35px) scaleX(1)}100%{opacity:1;transform:translateY(0) scaleX(1)}}
-.stage-kalasa,.stage-flower{position:absolute;z-index:-1;pointer-events:none;filter:drop-shadow(0 9px 12px rgba(75,30,13,.13))}
-.stage-kalasa{width:132px;height:150px;object-fit:contain;opacity:.9;top:36%;animation:kalasaFloat 5s ease-in-out infinite}
-.kalasa-left{left:-14px;transform:rotate(-13deg)}
-.kalasa-right{right:-14px;transform:scaleX(-1) rotate(-13deg);animation-delay:-2.5s}
-.stage-flower{width:116px;height:75px;object-fit:contain;opacity:.65;top:7%}
-.flower-left{left:2%;transform:rotate(-24deg)}
-.flower-right{right:2%;transform:scaleX(-1) rotate(-24deg)}
-@keyframes kalasaFloat{0%,100%{translate:0 0}50%{translate:0 -10px}}
-.hero-bottom-ornament{position:relative;gap:18px}
-.hero-bottom-ornament:before,.hero-bottom-ornament:after{content:"✥  ❋  ✥";color:var(--gold-dark);font-size:15px;letter-spacing:8px;opacity:.72}
-.hero-bottom-ornament img{width:92px;height:92px;filter:drop-shadow(0 8px 10px rgba(74,14,23,.16))}
+.sannasa-wrap.is-unrolled .scroll-cap-top{position:absolute;top:0;left:0;right:0;margin:0;transform:none}
+.sannasa-wrap.is-unrolled .scroll-cap-bottom{position:absolute;top:auto;bottom:0;left:0;right:0;margin:0;transform:none;opacity:1}
+@keyframes scrollFromCentre{0%{clip-path:inset(50% 0 50% 0);transform:scaleY(.08)}35%{clip-path:inset(31% 0 31% 0);transform:scaleY(.42)}72%{clip-path:inset(7% 0 7% 0);transform:scaleY(1.015)}100%{clip-path:inset(0);transform:scaleY(1)}}
+@keyframes topRollFromCentre{0%{top:50%;transform:translateY(-50%) scaleX(.72)}55%{top:4%;transform:translateY(-50%) scaleX(1.04)}100%{top:0;transform:translateY(0) scaleX(1)}}
+@keyframes bottomRollFromCentre{0%{top:50%;transform:translateY(-50%) scaleX(.72)}55%{top:96%;transform:translateY(-50%) scaleX(1.04)}100%{top:auto;bottom:0;transform:translateY(0) scaleX(1)}}
+
+/* Traditional pun-kalasa clusters fill the empty margins beside the narrow scroll */
+.kalasa-cluster{position:absolute;z-index:1;top:50%;display:grid;grid-template-columns:repeat(2, minmax(0,1fr));align-items:center;justify-items:center;width:190px;gap:3px 0;transform:translateY(-50%);pointer-events:none}
+.kalasa-cluster-left{left:0}
+.kalasa-cluster-right{right:0}
+.kalasa-cluster img{display:block;width:100px;height:122px;object-fit:contain;filter:drop-shadow(0 8px 9px rgba(75,30,13,.14));animation:kalasaFloat 5s ease-in-out infinite}
+.kalasa-cluster img:nth-child(2){transform:translateY(28px) scale(.86);animation-delay:-1.7s}
+.kalasa-cluster img:nth-child(3){transform:translateY(-22px) scale(.78);animation-delay:-3.1s}
+.kalasa-cluster-right img{transform:scaleX(-1)}
+.kalasa-cluster-right img:nth-child(2){transform:translateY(28px) scaleX(-1) scale(.86)}
+.kalasa-cluster-right img:nth-child(3){transform:translateY(-22px) scaleX(-1) scale(.78)}
+.cluster-flower{position:absolute;color:var(--gold-dark);font-size:28px;opacity:.78;text-shadow:0 2px 8px rgba(153,114,30,.2)}
+.cluster-flower:nth-of-type(1){top:-36px;left:40%}
+.cluster-flower:nth-of-type(2){bottom:-35px;right:32%;font-size:23px}
+.stage-flower{position:absolute;z-index:1;top:8%;width:110px;height:75px;object-fit:contain;opacity:.75;pointer-events:none;filter:drop-shadow(0 5px 8px rgba(75,30,13,.12))}
+.flower-left{left:4%;transform:rotate(-24deg)}
+.flower-right{right:4%;transform:scaleX(-1) rotate(-24deg)}
+@keyframes kalasaFloat{0%,100%{translate:0 0}50%{translate:0 -8px}}
+.venue-location-card{position:relative;width:min(560px,calc(100% - 28px));margin:35px auto 0;padding:27px 24px 25px;border:1px solid var(--gold-dark);outline:1px solid rgba(153,114,30,.22);outline-offset:5px;background:linear-gradient(145deg,#fffaf0,#f1e4ca);box-shadow:var(--shadow);text-align:center}
+.venue-location-symbol{display:grid;place-items:center;width:42px;height:42px;margin:0 auto 8px;border:1px solid var(--gold-dark);border-radius:50%;color:var(--gold-dark);font-size:27px}
+.venue-location-card h3{margin:2px 0;color:var(--maroon);font-size:23px}
+.venue-location-card>p:not(.section-kicker){margin:0 0 16px;color:var(--muted);font-size:14px}
+.venue-map-link{display:inline-flex;align-items:center;gap:8px;padding:9px 18px;border:1px solid var(--gold-dark);color:var(--gold-light);background:linear-gradient(120deg,var(--deep),var(--soft));text-decoration:none;font-size:13px}
+@media(max-width:1050px){.kalasa-cluster{width:140px}.kalasa-cluster img{width:78px;height:96px}.stage-flower{width:80px}}
+@media(max-width:760px){.kalasa-cluster{width:94px;opacity:.72}.kalasa-cluster img{width:58px;height:76px}.stage-flower{width:58px;height:50px;opacity:.55}.kalasa-cluster-left{left:-4px}.kalasa-cluster-right{right:-4px}}
+@media(max-width:520px){.kalasa-cluster{width:65px;opacity:.56}.kalasa-cluster img{width:43px;height:58px}.cluster-flower{font-size:17px}.stage-flower{width:42px}.venue-location-card{padding:22px 14px}}
 .map-modal[hidden]{display:none!important}
 .map-modal{position:fixed;z-index:80;inset:0;display:grid;place-items:center;padding:20px}
 .map-modal-backdrop{position:absolute;inset:0;background:rgba(24,6,10,.78);backdrop-filter:blur(7px)}
@@ -47,6 +68,5 @@
 .map-directions-button{display:inline-flex;justify-content:center;gap:8px;margin-top:17px;padding:10px 20px;color:var(--gold-light);border:1px solid var(--gold-dark);background:linear-gradient(120deg,var(--deep),var(--soft));text-decoration:none;font-size:13px;transition:transform .2s,box-shadow .2s}
 .map-directions-button:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(74,14,23,.2)}
 body.map-open{overflow:hidden}
-@media(max-width:900px){.stage-kalasa{width:92px;height:112px;top:38%}.kalasa-left{left:-9px}.kalasa-right{right:-9px}.stage-flower{width:78px}}
-@media(max-width:600px){.stage-kalasa{width:58px;height:76px;top:42%;opacity:.65}.kalasa-left{left:-15px}.kalasa-right{right:-15px}.stage-flower{width:54px;top:4%;opacity:.5}.hero-bottom-ornament img{width:74px;height:74px}.map-modal{padding:12px}.map-modal-panel{padding:24px 14px 18px}.map-modal-panel iframe{height:48vh}}
-@media(prefers-reduced-motion:reduce){.sannasa-wrap.is-unrolling .sannasa-card,.sannasa-wrap.is-unrolling .scroll-cap-bottom{animation-duration:.01ms!important}}
+@media(max-width:600px){.map-modal{padding:12px}.map-modal-panel{padding:24px 14px 18px}.map-modal-panel iframe{height:48vh}}
+@media(prefers-reduced-motion:reduce){.sannasa-wrap.is-unrolling .sannasa-card,.sannasa-wrap.is-unrolling .scroll-cap-top,.sannasa-wrap.is-unrolling .scroll-cap-bottom,.kalasa-cluster img{animation-duration:.01ms!important}}
