@@ -33,6 +33,7 @@
   function renderConfig() {
     const couple = config.couple || {};
     const venue = config.venue || {};
+    if (config.audioPath) audio.src = config.audioPath;
     $("#partnerOne").textContent = safeText(couple.nameOne, "සමන්");
     $("#partnerTwo").textContent = safeText(couple.nameTwo, "කමලී");
     $("#footerCouple").textContent = safeText(couple.englishNameOne, "Saman") + " & " + safeText(couple.englishNameTwo, "Kamali");
