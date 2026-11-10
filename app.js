@@ -14,6 +14,7 @@
   const toast = $("#toast");
   let toastTimer = null;
   let audioUnavailable = false;
+  audio.preload = "auto";
 
   function safeText(value, fallback) { return typeof value === "string" && value.trim() ? value.trim() : fallback; }
   function showToast(message) {
@@ -45,14 +46,12 @@
     document.body.classList.remove("map-open");
   }
   function setupVenueMaps() {
-    document.querySelectorAll(".map-link").forEach(function (link) {
-      link.addEventListener("click", function (event) {
-        event.preventDefault();
-        const eventName = link.closest(".timeline-copy").querySelector("h3").textContent;
-        const eventConfig = (config.events || []).find(function (item) { return item.id + "Map" === link.id; });
-        const query = eventConfig ? (eventConfig.mapQuery || (config.venue || {}).mapQuery) : (config.venue || {}).mapQuery;
-        openVenueMap(query, eventName);
-      });
+    const venueLink = $("#venueMapLink");
+    venueLink.addEventListener("click", function (event) {
+      event.preventDefault();
+      const venue = config.venue || {};
+      const query = venue.mapQuery || venue.address || venue.area;
+      openVenueMap(query, venue.name || "උත්සව ස්ථානය");
     });
     $("#mapModalClose").addEventListener("click", closeVenueMap);
     $("#mapModal").querySelector("[data-close-map]").addEventListener("click", closeVenueMap);
@@ -70,6 +69,9 @@
     $("#guestInvitation").textContent = invitationMessage();
     $("#rsvpGreeting").textContent = guestName ? "ආදරණීය " + guestName + ", මෙම සොඳුරු දිනයට ඔබ සහභාගී වන බව අපට දන්වන්න." : "මෙම සොඳුරු දිනයට ඔබ සහභාගී වන බව අපට දන්වන්න.";
     $("#heroVenue").textContent = safeText(venue.area, "මහනුවර, ශ්‍රී ලංකාව");
+    $("#venueLocationName").textContent = safeText(venue.name, "මංගල උත්සව ශාලාව");
+    $("#venueLocationArea").textContent = safeText(venue.address, safeText(venue.area, "මහනුවර, ශ්‍රී ලංකාව"));
+    $("#venueMapLink").href = mapsUrl(venue.mapQuery || venue.address || venue.area);
     $("#weddingDateText").textContent = safeText(config.dateLabel, "දිනය ඉක්මනින් දැනුම් දෙන්නෙමු");
     $("#weddingTimeText").textContent = safeText(config.timeLabel, "");
     const date = new Date(config.weddingDate || "");
@@ -81,7 +83,7 @@
       const mapEl = $("#" + item.id + "Map");
       if (timeEl) timeEl.textContent = safeText(item.time, "");
       if (venueEl) venueEl.textContent = safeText(item.venue, safeText(venue.area, ""));
-      if (mapEl) mapEl.href = mapsUrl(item.mapQuery || venue.mapQuery);
+      if (mapEl) mapEl.href = mapsUrl(venue.mapQuery || venue.address || venue.area);
     });
   }
 
